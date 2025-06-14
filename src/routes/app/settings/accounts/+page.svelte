@@ -17,7 +17,9 @@
   import ksclient from '$lib/modules/auth/kitsu'
   import native from '$lib/modules/native'
   import { click } from '$lib/modules/navigate'
+  import { t } from '$lib/modules/i18n'
 
+  const prefix = 'app.settings.accounts'
   const alviewer = client.viewer
 
   $: anilist = $alviewer
@@ -33,7 +35,8 @@
 </script>
 
 <div class='space-y-3 pb-10 lg:max-w-4xl'>
-  <div class='font-weight-bold text-xl font-bold'>Account Settings</div>
+  <div class='font-weight-bold text-xl font-bold'>{$t(`${prefix}.title`)}</div>
+
   <div>
     <div class='bg-neutral-900 px-6 py-4 rounded-t-md flex flex-row gap-3'>
       {#if anilist?.viewer?.id}
@@ -47,20 +50,21 @@
               {anilist.viewer.name}
             </div>
             <div class='text-[9px] text-muted-foreground leading-snug'>
-              AniList
+              {$t(`${prefix}.aniList`)}
             </div>
           </div>
         </div>
       {:else}
-        <div>Not logged in</div>
+        <div>{$t(`${prefix}.not_logged_in`)}</div>
       {/if}
       <Anilist class='size-6 ml-auto' />
     </div>
+
     <div class='bg-neutral-950 px-6 py-4 rounded-b-md flex justify-between'>
       {#if anilist?.viewer?.id}
-        <Button variant='secondary' on:click={() => client.logout()}>Logout</Button>
+        <Button variant='secondary' on:click={() => client.logout()}>{$t(`${prefix}.logout`)}</Button>
       {:else}
-        <Button variant='secondary' on:click={() => client.auth()}>Login</Button>
+        <Button variant='secondary' on:click={() => client.auth()}>{$t(`${prefix}.login`)}</Button>
       {/if}
       <div class='flex items-center gap-4'>
         <Tooltip.Root>
@@ -68,7 +72,7 @@
             <MessagesSquare size={16} class='text-muted-foreground' />
           </Tooltip.Trigger>
           <Tooltip.Content>
-            Has Discussions
+            {$t(`${prefix}.has_discussions`)}
           </Tooltip.Content>
         </Tooltip.Root>
         <Tooltip.Root>
@@ -76,16 +80,17 @@
             <CloudOff size={16} class='text-muted-foreground' />
           </Tooltip.Trigger>
           <Tooltip.Content>
-            Works Offline
+            {$t(`${prefix}.works_offline`)}
           </Tooltip.Content>
         </Tooltip.Root>
         <div class='flex gap-2 items-center'>
           <Switch hideState={true} id='al-sync-switch' bind:checked={$syncSettings.al} />
-          <Label for='al-sync-switch' class='cursor-pointer'>Enable Sync</Label>
+          <Label for='al-sync-switch' class='cursor-pointer'>{$t(`${prefix}.enable_sync`)}</Label>
         </div>
       </div>
     </div>
   </div>
+
   <div>
     <div class='bg-neutral-900 px-6 py-4 rounded-t-md flex flex-row gap-3'>
       {#if kitsu?.id}
@@ -99,42 +104,43 @@
               {kitsu.name}
             </div>
             <div class='text-[9px] text-muted-foreground leading-snug'>
-              Kitsu
+              {$t(`${prefix}.kitsu`)}
             </div>
           </div>
         </div>
       {:else}
-        <div>Not logged in</div>
+        <div>{$t(`${prefix}.not_logged_in`)}</div>
       {/if}
       <Kitsu class='size-6 !ml-auto' />
     </div>
+
     <div class='bg-neutral-950 px-6 py-4 rounded-b-md flex justify-between'>
       {#if kitsu?.id}
-        <Button variant='secondary' on:click={() => ksclient.logout()}>Logout</Button>
+        <Button variant='secondary' on:click={() => ksclient.logout()}>{$t(`${prefix}.logout`)}</Button>
       {:else}
         <Dialog.Root portal='#root'>
           <Dialog.Trigger let:builder asChild>
-            <Button builders={[builder]} variant='secondary'>Login</Button>
+            <Button builders={[builder]} variant='secondary'>{$t(`${prefix}.kitsu_login_title`)}</Button>
           </Dialog.Trigger>
           <Dialog.Content>
             <Dialog.Header class='items-center'>
               <div class='space-y-4 px-4 sm:px-6 max-w-xl w-full'>
-                <div class='font-weight-bold text-xl font-bold'>Kitsu Login</div>
+                <div class='font-weight-bold text-xl font-bold'>{$t(`${prefix}.kitsu_login_title`)}</div>
                 <div class='space-y-2'>
-                  <Label for='kitsu-login' class='leading-[unset] grow font-bold'>Login</Label>
+                  <Label for='kitsu-login' class='leading-[unset] grow font-bold'>{$t(`${prefix}.kitsu_login_label`)}</Label>
                   <Input type='text' id='kitsu-login' placeholder='email@website.com' autocomplete='off' bind:value={kitsuLogin} />
                 </div>
                 <div class='space-y-2'>
-                  <Label for='kitsu-password' class='leading-[unset] grow font-bold'>Password</Label>
+                  <Label for='kitsu-password' class='leading-[unset] grow font-bold'>{$t(`${prefix}.kitsu_password_label`)}</Label>
                   <Input type='password' id='kitsu-password' placeholder='**************' autocomplete='off' bind:value={kitsuPassword} />
                 </div>
                 <div class='text-sm text-muted-foreground'>
-                  Your password is not stored in the app, it is sent directly to Kitsu for authentication.
+                  {$t(`${prefix}.kitsu_password_info`)}
                 </div>
                 <div class='py-3 gap-3 mt-auto flex flex-col sm:flex-row-reverse'>
-                  <Button variant='secondary' on:click={() => ksclient.login(kitsuLogin, kitsuPassword)}>Login</Button>
+                  <Button variant='secondary' on:click={() => ksclient.login(kitsuLogin, kitsuPassword)}>{$t(`${prefix}.login`)}</Button>
                   <Dialog.Close let:builder asChild>
-                    <Button variant='destructive' builders={[builder]}>Cancel</Button>
+                    <Button variant='destructive' builders={[builder]}>{$t(`${prefix}.cancel`)}</Button>
                   </Dialog.Close>
                 </div>
               </div>
@@ -144,19 +150,20 @@
       {/if}
       <div class='flex gap-2 items-center'>
         <Switch hideState={true} id='kitsu-sync-switch' bind:checked={$syncSettings.kitsu} />
-        <Label for='kitsu-sync-switch' class='cursor-pointer'>Enable Sync</Label>
+        <Label for='kitsu-sync-switch' class='cursor-pointer'>{$t(`${prefix}.enable_sync`)}</Label>
       </div>
     </div>
   </div>
+
   <div>
     <div class='bg-neutral-900 px-6 py-4 rounded-t-md flex flex-row gap-3'>
       <div class='flex flex-row gap-3'>
         <div class='flex flex-col'>
           <div class='text-sm'>
-            Other
+            {$t(`${prefix}.other`)}
           </div>
           <div class='text-[9px] text-muted-foreground leading-snug'>
-            Local
+            {$t(`${prefix}.local`)}
           </div>
         </div>
       </div>
@@ -168,12 +175,12 @@
           <CloudOff size={16} class='text-muted-foreground' />
         </Tooltip.Trigger>
         <Tooltip.Content>
-          Works Offline
+          {$t(`${prefix}.works_offline`)}
         </Tooltip.Content>
       </Tooltip.Root>
       <div class='flex gap-2 items-center'>
         <Switch hideState={true} id='local-sync-switch' bind:checked={$syncSettings.local} />
-        <Label for='local-sync-switch' class='cursor-pointer'>Enable Sync</Label>
+        <Label for='local-sync-switch' class='cursor-pointer'>{$t(`${prefix}.enable_sync`)}</Label>
       </div>
     </div>
   </div>

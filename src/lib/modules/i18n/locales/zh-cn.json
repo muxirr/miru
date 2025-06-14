@@ -1,0 +1,60 @@
+{
+  "app": {
+    "settings": {
+      "title": "设置",
+      "description": "管理你的应用设置、偏好和账号。",
+      "nav": {
+        "player": "播放器",
+        "client": "客户端",
+        "interface": "界面",
+        "extensions": "扩展",
+        "accounts": "账号",
+        "app": "应用",
+        "change_log": "更新日志"
+      },
+      "interface": "Interface",
+      "native": "Native",
+      "device_info_error": "无法获取设备版本信息",
+      "accounts": {
+        "title": "账户设置",
+        "not_logged_in": "未登录",
+        "logout": "登出",
+        "login": "登录",
+        "enable_sync": "启用同步",
+        "aniList": "AniList",
+        "kitsu": "Kitsu",
+        "kitsu_login_title": "Kitsu 登录",
+        "kitsu_login_label": "登录",
+        "kitsu_password_label": "密码",
+        "kitsu_password_info": "您的密码不会存储在应用内，直接发送至 Kitsu 进行认证。",
+        "cancel": "取消",
+        "has_discussions": "有讨论",
+        "works_offline": "离线可用",
+        "other": "其他",
+        "local": "本地"
+      },
+      "app": {
+        "title_debug": "调试设置",
+        "title_app": "应用设置",
+        "copy_message": "复制到剪贴板",
+        "copy_description": "已复制日志内容到剪贴板",
+        "devtools_message": "打开开发者工具",
+        "import_message": "导入设置失败",
+        "import_description": "从剪贴板导入设置失败，请确保复制的数据是有效的JSON数据。",
+        "import_settings": "从剪贴板导入设置",
+        "export_settings": "导出设置到剪贴板",
+        "reset_all": "重置所有为默认值",
+        "log_level": "日志级别",
+        "log_level_description": "启用应用特定部分的日志记录。这些日志保存到%appdata%/Hayase/logs/main.log或~/config/Hayase/logs/main.log。",
+        "app_device_info": "应用和设备信息",
+        "app_device_info_description": "复制应用和设备的调试信息和功能，如GPU信息、GPU功能、版本信息和设置到剪贴板。",
+        "log_output": "日志输出",
+        "log_output_description": "复制调试日志到剪贴板。一旦启用日志级别，您可以使用此功能快速将创建的日志复制到剪贴板，而无需导航到目录中的日志文件。",
+        "open_ui_devtools": "打开开发者工具",
+        "open_ui_devtools_description": "打开开发者工具，这允许检查媒体播放信息、渲染性能等。请勿在此处粘贴任何代码，如果有人告诉您这样做，您可能正在被欺骗！",
+        "hide_to_tray": "隐藏应用到托盘",
+        "hide_to_tray_description": "使应用在关闭窗口时隐藏到托盘，而不是关闭。这在您想在后台保持种子客户端运行以进行上传/下载时非常有用。"
+      }
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "app": {
+    "settings": {
+      "title": "Settings",
+      "description": "Manage your app settings, preferences and accounts.",
+      "nav": {
+        "player": "Player",
+        "client": "Client",
+        "interface": "Interface",
+        "extensions": "Extensions",
+        "accounts": "Accounts",
+        "app": "App",
+        "change_log": "Changelog"
+      },
+      "interface": "Interface",
+      "native": "Native",
+      "device_info_error": "Could not obtain device version",
+      "accounts": {
+        "title": "Account Settings",
+        "not_logged_in": "Not logged in",
+        "logout": "Logout",
+        "login": "Login",
+        "enable_sync": "Enable Sync",
+        "aniList": "AniList",
+        "kitsu": "Kitsu",
+        "kitsu_login_title": "Kitsu Login",
+        "kitsu_login_label": "Login",
+        "kitsu_password_label": "Password",
+        "kitsu_password_info": "Your password is not stored in the app, it is sent directly to Kitsu for authentication.",
+        "cancel": "Cancel",
+        "has_discussions": "Has Discussions",
+        "works_offline": "Works Offline",
+        "other": "Other",
+        "local": "Local"
+      },
+      "app": {
+        "title_debug": "Debug Settings",
+        "title_app": "App Settings",
+        "copy_message": "Copied to clipboard",
+        "copy_description": "Copied log contents to clipboard",
+        "devtools_message": "Open Devtools",
+        "import_message": "Failed to import settings",
+        "import_description": "Failed to import settings from clipboard, make sure the copied data is valid JSON.",
+        "import_settings": "Import Settings From Clipboard",
+        "export_settings": "Export Settings To Clipboard",
+        "reset_all": "Reset EVERYTHING To Default",
+        "log_level": "Logging Levels",
+        "log_level_description": "Enable logging of specific parts of the app. These logs are saved to %appdata$/Hayase/logs/main.log or ~/config/Hayase/logs/main.log.",
+        "app_device_info": "App and Device Info",
+        "app_device_info_description": "Copy app and device debug info and capabilities, such as GPU information, GPU capabilities, version information and settings to clipboard.",
+        "log_output": "Log Output",
+        "log_output_description": "Copy debug logs to clipboard. Once you enable a logging level you can use this to quickly copy the created logs to clipboard instead of navigating to the log file in directories.",
+        "open_ui_devtools": "Open UI Devtools",
+        "open_ui_devtools_description": "Open devtools for the UI process, this allows to inspect media playback information, rendering performance and more. DO NOT PASTE ANY CODE IN THERE, YOU'RE LIKELY BEING SCAMMED IF SOMEONE TELLS YOU TO!",
+        "hide_to_tray": "Hide App To Tray",
+        "hide_to_tray_description": "Makes the app hide to tray instead of closing when you close the window. This is useful if you want to keep the torrent client open in the background to seed/leech."
+      }
+    }
+  }
+}
